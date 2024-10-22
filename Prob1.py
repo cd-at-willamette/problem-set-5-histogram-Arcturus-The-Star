@@ -1,5 +1,5 @@
 # Name: Sophie Avery
-# Time spent: ~1.5 hours
+# Time spent: ~1 hour
 
 from pgl import *
 
