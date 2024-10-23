@@ -5,27 +5,26 @@ from pgl import *
 
 #1a
 def create_histogram_array(data:list[int])->list[int]:
-    return [data.count(i) for i in range(max(data) + 1)]
+    return [data.count(i) for i in range(max(data) + 1)] # Returns the count of each number from zero to the largest number in the list
 #1b
 def print_histogram(hist:list[int]) -> None:
-    [print(*[str(i) + ":"] + ["*" for j in range(hist[i])]) for i in range(len(hist))]
+    [print(*[str(i) + ":"] + ["*" for j in range(hist[i])]) for i in range(len(hist))] # Prints a histogram of the data from create_histogram_array()
 
 
 #1c
 def graph_histogram(hist:list[int], width:int, height:int) -> None:
-    # should deal with larger numbers -- fix that lmao
     rect_width = width / len(hist)
     rect_height = (height / max(hist)) - 10
     gw = GWindow(width, height)
-    brick_color = "#4E0E04"
-    def my_rect(x,y,w,h,color):
+    brick_color = "#4E0E04" # A pleasing color
+    def my_rect(x,y,w,h,color): # Classic rectangle function
         rect = GRect(x,y,w,h)
         rect.set_filled(True)
         rect.set_color(color)
         rect.set_line_width(5)
         gw.add(rect)
     x = 0
-    for i in range(len(hist)):
+    for i in range(len(hist)): # Loops to create bricks
         y = height - rect_height
         for j in range(hist[i]):
             my_rect(x,y,rect_width,rect_height,brick_color)
